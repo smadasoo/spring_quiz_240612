@@ -2,21 +2,21 @@ package com.quiz.lesson02.bo;
 
 import java.util.List;
 
+import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.quiz.lesson02.domain.store;
-import com.quiz.lesson02.mapper.storeMapper;
+import com.quiz.lesson02.mapper.StoreMapper;
 
-@Service  // spring bean
+@Service // spring bean
 public class StoreBO {
-
-	@Autowired
-	private storeMapper storeMapper;
 	
-	// input: X 모든걸 다 받아와야해서 input은 없다
-	// output: List<store>
-	public List<store> getstoreList() { // get은 조회하다라는 뜻이다
+	@Autowired  // Dependency Injection  (DI)
+	private StoreMapper storeMapper;
+	
+	// input: X
+	// output: List<Store>
+	public List<Store> getStoreList() {
 //		List<Store> storeList = storeMapper.selectStoreList();
 //		return storeList; // 컨트롤러한테 전달
 		
