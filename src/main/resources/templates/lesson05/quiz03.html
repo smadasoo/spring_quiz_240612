@@ -9,35 +9,40 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="contanier">
+	<div class="container">
+		<h1>회원 정보 리스트</h1>
+		<img src="/img/sunny.jpg">
+		
 		<table class="table text-center">
-			<h1>회원 정보 리스트</h1>
-			<!-- static폴더에있는 css,img는 앞에 무조건 절대 경로로 시작 / -->
-			<img src="/img/sunny.jpg">
 			<thead>
-				<tr class="text-bold">
+				<tr>
 					<th>No</th>
 					<th>이름</th>
 					<th>생년월일</th>
 					<th>전화번호</th>
 					<th>국적</th>
-					<th></th>
+					<th>이메일</th>
+					<th>자기소개</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="member, status : ${member}">
-					<td th:text="${status.count}">No</td>		
-					<td th:text="${member.name}">이름</td>		
+				<tr th:each="member, status : ${members}">
+					<td th:text="${status.count}">No</td>
+					<td th:text="${member.name}">이름</td>
+					<td th:text="${#temporals.format(member.birth, 'yyy년 M월 d일')}">생년월일</td>
 					<td>
-						<span th:if="${#strings.startsWish(member.phoneNumber, '010')}" th:text="${member.phoneNumber}"></span>
-					</td>	
+						<span th:if="${#strings.startsWith(member.phoneNumber, '010')}" th:text="${member.phoneNumber}"></span>
+						<span th:unless="${#strings.startsWith(member.phoneNumber, '010')}" th:text="'유효하지 않은 전화번호'"></span>
+					</td>
+					<td th:text="${#strings.replace(member.nationality, '삼국시대', '삼국 -')}">국적</td>
 					<td>
 						<b th:text="${#strings.arraySplit(member.email, '@')[0]}"></b>@<span th:text="${#strings.arraySplit(member.email, '@')[1]}"></span>
-					</td>		
-					<td th:text="${#strings.replace(member.nationality, '삼국시대', '삼국-')}">국적</td>		
-					<td th:text="${member.introduce}">자기소개</td>
-					<td th:text="${temporals.format(member.birth, yyy년 M월 d일)}">생년월일</td>
-				</tr>		
+					</td>
+					<td class="text-left">
+						<span th:if="${#strings.length(member.introduce) > 15}" th:text="${#strings.substring(member.introduce, 0, 15) + '...'}"></span>
+						<span th:unless="${#strings.length(member.introduce) > 15}" th:text="${member.introduce}"></span>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
