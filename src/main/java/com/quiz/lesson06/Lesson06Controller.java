@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Lesson06Controller {
 
 	// 즐겨찾기 추가 화면
+	//http://localhost/lesson06/add-bookmark-view
 	@GetMapping ("/add-bookmark-view")
 	public String addBookMarkView() {
 		return "lesson06/addBookmark";

@@ -10,15 +10,49 @@
 </head>
 <body>
  <div class="container">
-        <h1>회원가입1</h1>
-        <form action="/lesson06/add-bookMark" method="post">
-	<h1>즐겨 찾기 추가하기</h1>
-	<script>
-		$("#joinBtn").on('click', function(){
-			alert("제목을 입력하세요")
-		})
-	</script>
-	</form>
+		<h1>즐겨찾기 추가</h1>
+		
+		<div class="form-group">
+			<label for="title">제목</label>
+			<input type="text" id="name" class="form-control">
+		</div>
+
+		<div class="form-group">
+			<label for="url">URL 주소</label>
+			<input type="text" id="url" class="form-control col-11">
+		</div>
+		
+		<button type="button" id="addBtn" class="btn btn-success btn-block">추가</button>
 	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$("#joinBtn").on('click', function(){
+				let name = $("input[name=name]").val().trim();
+				if (name.length < 1){
+					alret("제목을 입력하세요");
+					return;
+				}
+				let url = $("input[url=url]").val().trim();
+				if (url == ""){
+					alret("주소를 입력하세요");
+					return;
+				}
+				$/ajax({
+					type:"POST"
+					, url:"/lesson06/add-bookmark"
+					, data:{"name":name, "url":url}
+				
+				, success:function(data){
+					location.href = "/lesson06/bookmark-list-view"
+				}
+				,error:function(error){
+					alert(error);
+				}
+				});
+			
+			});
+		});
+	</script>
 </body>
 </html>
