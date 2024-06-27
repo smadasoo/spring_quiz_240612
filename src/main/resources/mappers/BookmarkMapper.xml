@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.quiz.lesson06.mapper.BookmarkMapper">
 	<select id="selectBookmarkList" resultType="com.quiz.lesson06.domain.Bookmark">
-		SELELCT 
+		SELECT 
 			`id`
 			,`name`
 			,`url`
@@ -24,10 +24,19 @@
 		VALUES
 		(
 			#{name}
-			#{url}
-			NOW()
-			NOW()
+			, #{url}
+			, NOW()
+			, NOW()
 		)
 		
 	</insert>
+	
+	<select id="isDuplicationByUrl" parameterType="stirng" resultType="boolean">
+		SELECT
+			COUNT(*)
+		FROM
+			`bookmark`
+		WHERE
+			`url` = #{url}
+	</select>
  </mapper>

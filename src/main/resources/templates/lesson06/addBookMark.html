@@ -17,27 +17,18 @@
 			<input type="text" id="name" class="form-control">
 		</div>
 
+		<label for="url">URL 주소</label>
 		<div class="form-group d-flex">
-			<label for="url">URL 주소</label>
-			<input type="text" id="url" class="form-control col-11">
-			<button type="button" id="nameCheckBtn" class="btn btn-warning col-4">중복확인</button>
-			
+			<input type="text" id="url" class="form-control col-10">
+			<button type="button" id="nameCheckBtn" class="btn btn-info ml-3 h-75">중복확인</button>
 		</div>
 		
 		<button type="button" id="addBtn" class="btn btn-success btn-block">추가</button>
 	</div>
 	
 	<script>
-		$(document).ready(function() {
-			$("#addBtn").on('click', function(){
-				$("#addBtn").empty();
-				
-				let name = $("#name").val().trim();
-				if (!name){
-					$("#nameStatusArea").append('<span class="text-danger">이름이 비었습니다.</span>'); // 함수가 모르고 검색을 해봐야 할때  Ex)태그안에태그  동적으로 넣기등으로 검색해보아야함
-					return; //비어있을때 서버에 갈수 없기 때문에 return을 꼭 해준다.
-				} 
-			});
+		$(document).ready(function() { // 뿌려준다.document 
+		
 			// 추가 버튼
 			$("#addBtn").on('click', function() {
 				//alert("버튼 클릭");
@@ -73,6 +64,7 @@
 					
 					// response
 					// callback 함수
+					
 					, success:function(data) { // data: JOSn String -> jquery ajax 함수가 parsing => js dictionary
 							// {"code":200, "result":"성공"}
 					
@@ -88,6 +80,19 @@
 				});
 				
 			});//-- 추가버튼 이벤트 끝
+			
+			// 중복 알람뜨는 버튼
+		$("#nameCheckBtn").on('click', function(){
+			$("#nameStatusArea").empty();
+			
+			let url = $("#url").val.trim();
+			if (!url) {
+				$("#nameStatusArea").append(<span class="text-danger">중복된 url 입니다.</span>);
+				return;
+			}
+		})
+			
+			
 		}); //--ready 끝
 	</script>
 </body>
