@@ -3,7 +3,7 @@ package com.quiz.booking.domain;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class booking {
+public class Booking {
 	private int id;
 	private String name;
 	private int headcount;

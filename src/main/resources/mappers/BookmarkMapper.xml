@@ -16,7 +16,7 @@
 	<insert id="insertBookmark" parameterType="map">
 		INSERT INTO `bookmark`
 		(
-			name`
+			`name`
 			,`url`
 			,`createdAt`
 			,`updatedAt`
