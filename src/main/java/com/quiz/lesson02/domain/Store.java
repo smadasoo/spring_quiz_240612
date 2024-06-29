@@ -2,17 +2,14 @@ package com.quiz.lesson02.domain;
 
 import java.time.LocalDateTime;
 
-//일반 자바빈
 public class Store {
+
 	private int id;
 	private String name;
 	private String phoneNumber;
 	private String address;
 	private String businessNumber;
 	private String introduce;
-	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
-	
 	public int getId() {
 		return id;
 	}
@@ -61,5 +58,6 @@ public class Store {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 }

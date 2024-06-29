@@ -2,24 +2,21 @@ package com.quiz.lesson02.bo;
 
 import java.util.List;
 
-import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.quiz.lesson02.domain.Store;
 import com.quiz.lesson02.mapper.StoreMapper;
 
-@Service // spring bean
+@Service
 public class StoreBO {
-	
-	@Autowired  // Dependency Injection  (DI)
+
+	@Autowired
 	private StoreMapper storeMapper;
+	// input : storelist 
+	// output : x
 	
-	// input: X
-	// output: List<Store>
 	public List<Store> getStoreList() {
-//		List<Store> storeList = storeMapper.selectStoreList();
-//		return storeList; // 컨트롤러한테 전달
-		
 		return storeMapper.selectStoreList();
 	}
 }
