@@ -16,9 +16,10 @@ public class RealEstateBO {
 
 	// input: id(int)
 	// output: RealEstate(단건) or null
-	public RealEstate getRealEstateById(int id) {
+	public RealEstate getRealEstateListByid(int id){
 		return realEstateMapper.selectRealEstateById(id);
 	}
+
 	
 	// input: rentPrice(필수)
 	// output: List<RealEstate>

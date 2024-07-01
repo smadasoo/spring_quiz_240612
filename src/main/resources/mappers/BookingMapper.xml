@@ -16,6 +16,14 @@
 			`booking` 
  	</select>
  	
+ 	<delete id="deleteBookingById" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
+ 	
  	<insert id="insertBooking" parameterType="map">
  		INSERT INTO `booking`
  		(
@@ -24,6 +32,9 @@
  			, `day`
  			, `headcount`
  			, `phoneNumber`
+ 			, `state` 
+ 			, `createdAt`
+ 			, `updatedAt`
  		)
  		VALUES
  		(
@@ -32,8 +43,18 @@
  			, #{day}
  			, #{headcount}
  			, #{phoneNumber}
+ 			, '대기중' <!-- 어떠한 걸 고정하는게 '하드코딩'이라고 한다. -->
  			, NOW()
  			, NOW()
  		)
  	</insert>
+ 	
+ 	<select id="getCheckBooking" resultType="com.quiz.booking.mapper.BookingMapper">
+ 		SELECT
+			* 
+ 		FROM
+ 			id = #{id}
+ 		WHERE
+ 			
+ 	</select>
  </mapper>
