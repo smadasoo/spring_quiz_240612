@@ -86,8 +86,9 @@ public class BookingControlller {
 	
 	// 예약확인 화면
 	// http://localhost:8080/check-booking-view
-		@GetMapping("/check-booking-view")
-		public String checkBookingView() {
+	@ResponseBody
+	@PostMapping ("/check-booking")
+		public Map<String, Object>String checkBookingView() {
 			return "booking/checkBooking";
 		}
 		
