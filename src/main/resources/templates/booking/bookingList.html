@@ -50,6 +50,8 @@
 	            			<span th:if="${booking.state == '취소'}" class="text-danger" th:text="${booking.state}"></span>
 	            		</td>
 	            		<td>
+	            		<!-- 띄어쓰기가 있을 땐 작은 따옴표로 감싸준다. -->
+	            		<!-- 삭제버튼 -->
 	            			<button type="button" class="del-btn btn btn-danger" th:text="'삭제'" th:data-booking-id="${booking.id}"></button>
 	            		</td>
 	            	</tr>
