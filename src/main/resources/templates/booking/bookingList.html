@@ -34,7 +34,7 @@
 	                    <th>숙박인원</th>
 	                    <th>전화번호</th>
 	                    <th>예약상태</th>
-	                    
+	                    <th></th>
 	                </tr>
 	            </thead>
 	            <tbody>
@@ -47,12 +47,10 @@
 	            		<td>
 	            			<span th:if="${booking.state == '대기중'}" class="text-info" th:text="${booking.state}"></span>
 	            			<span th:if="${booking.state == '확정'}" class="text-success" th:text="${booking.state}"></span>
-	            			<span th:if="${booking.state == '취소일정'}" class="text-danger" th:text="${booking.state}"></span>
+	            			<span th:if="${booking.state == '취소'}" class="text-danger" th:text="${booking.state}"></span>
 	            		</td>
 	            		<td>
-	            		<!-- 띄어쓰기가 있을댄 작은 따옴표로 감싸준다. -->
-	            		<!-- 삭제 버튼 -->
-	            			<button type="button" class="dell-btn btn btn-danger" th:text="'삭제'" th:data-booking-id="${booking.id}"></button>
+	            			<button type="button" class="del-btn btn btn-danger" th:text="'삭제'" th:data-booking-id="${booking.id}"></button>
 	            		</td>
 	            	</tr>
 	            </tbody>
@@ -65,12 +63,12 @@
 	            Copyright 20XX tongnamu. All right reserved.
 	        </small>
 	    </footer>
-	</div>  
+	</div> 
 	
 	<script>
-		$(document).ready(function(){
+		$(document).ready(function() {
 			// 삭제 클릭
-			$(".del-btn").on('click', function(){
+			$(".del-btn").on('click', function() {
 				let id = $(this).data('booking-id');
 				//alert(id);
 				
@@ -78,21 +76,21 @@
 					// request
 					type:"delete"
 					, url:"/booking/delete-booking"
-					, date:{"id" :id}
-				
+					, data:{"id":id}
+					
 					// response
 					, success:function(data) {
-						// {"code":200, "result" : "성공"}
+						// {"code":200, "result":"성공"}
 						if (data.code == 200) {
-							alert("삭제 되었습니다.")
+							alert("삭제되었습니다.");
 							location.reload(true);
-						} else if (data.code == 500){
-							// {"code":500, "error_message:"에러이 원인"}
-							alert(data.error_message);							
+						} else if (data.code == 500) {
+							// {"code":500, "error_message":"에러의 원인"}
+							alert(data.error_message);
 						}
 					}
 					, error:function(error) {
-						alert("삭제하는데 실패했습니다. 관리자에게 문의해주세요.")
+						alert("삭제하는데 실패했습니다. 관리자에게 문의해주세요.");
 					}
 				});
 			});

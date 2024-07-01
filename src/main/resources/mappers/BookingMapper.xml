@@ -16,6 +16,7 @@
 			`booking` 
  	</select>
  	
+ 	<!-- 삭제 버튼 -->
  	<delete id="deleteBookingById" parameterType="int">
  		DELETE
  		FROM
