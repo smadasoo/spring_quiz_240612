@@ -1,18 +1,27 @@
 package com.quiz.lesson07.bo;
 
-@service
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.quiz.lesson07.entity.CompanyEntity;
+import com.quiz.lesson07.repository.CompanyRepository;
+
+@Service
 public class CompanyBO {
 
-	public CompanyEntity saveCompany(String name, String business,
-			String scale, String headcount) {
+	@Autowired
+	private CompanyRepository companyRepository;
+	
+	public CompanyEntity saveCompany(String name, String bussiness,
+			String scale, int headcount) {
 		
-		CompanyEntity company = CompanyEntity.builer()
+		CompanyEntity company = CompanyEntity.builder()
 				.name(name)
-				.business(business)
+				.bussiness(bussiness)
 				.scale(scale)
 				.headcount(headcount)
-				.createdAt(createdAt)
 				.build();
+		return companyRepository.save(company);
 	}
 	
 }
