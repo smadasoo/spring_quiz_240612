@@ -31,9 +31,23 @@ public class BookingBO {
 	// 정보 insert
 	public void addBooking(String name, LocalDate date, int day, int headcount, String phoneNumber) {
 		bookingMapper.insertBooking(name, date, day, headcount, phoneNumber); // bookingmapper에게 받아온 파라미터를 보낸다.
-	}
 	
 	// 조회하기
+	// input  : name, phoneNumber
+	// output : booking(최신)  or Null
+//	public Booking getLatestBookingByNamePhoneNumber(String name, String phoneNumber) {
+		// 리스트가 없을 때 []     있을때 : [booking1 , booking2....]
+// 		List<Booking> bookingList = bookingMapper.selectBookingListByNamePhoneNumber(name, phoneNumber) {
+// 			if (bookingList.isEmpty()) {
+// 				return null;
+// 			}
+ 			
+ 			// 삼항 연산자
+ 			// null이 아니기 때문에 삼항연산자가 가능 한건
+ 			 bookingList.isEmpty() ? null : bookingList.get(bookingList.size() - 1);
+ 		}
+}
+	}
 	
 	
 }

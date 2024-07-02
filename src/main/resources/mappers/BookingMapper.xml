@@ -58,4 +58,21 @@
  		WHERE
  			
  	</select>
+ 	<select  id="selectBookingListByNamePhoneNumber" parameterType="com.quiz.booking.domain.Booking">
+ 	SELECT 
+ 			`id`
+			, `name`
+			, `headcount`
+			, `date`
+			, `phoneNumber`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`booking` 
+		WHERE
+			`name` = #{name}
+			AND `phoneNumber` = #{phoneNumber}
+ 		
+ 	</select>
  </mapper>

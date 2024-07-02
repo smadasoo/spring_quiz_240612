@@ -93,6 +93,15 @@
 					
 					// response
 					, success:function(data) {
+						if (data.code == 500) {
+							// 예약 없음
+							alert(data.error_message);
+						} else if (data.code == 200) {
+							alert("이름:" + data.result.name);
+						alert("이름:" + data.result.name
+								+ "\n 날짜" + data.result)
+						
+						}
 						
 					}
 					, error:function(error) {

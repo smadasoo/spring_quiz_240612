@@ -86,11 +86,11 @@ public class BookingControlller {
 	
 	// 예약확인 화면
 	// http://localhost:8080/check-booking-view
-	@ResponseBody
-	@PostMapping ("/check-booking")
-		public Map<String, Object>String checkBookingView() {
-			return "booking/checkBooking";
-		}
+	
+	@GetMapping("/check-booking-view")
+	public String checkBookingView() {
+		return "booking/checkBooking";
+	}
 		
 		// AJAX 요청 - 예약 조회
 		@ResponseBody
@@ -100,9 +100,20 @@ public class BookingControlller {
 				@RequestParam("phoneNumber") String phoneNumber) {
 			
 			// db select
+			Booking booking = bookingBO.getLatestBookingByNamePhoneNumber(name, phoneNumber);
 			
 			// 응답값 => JSON
 			Map<String, Object> result = new HashMap<>();
+			if (booking != null) {
+				// JSON {"code":200, "result":booking 객체}
+				// JSON {"code":200, "result":{"id":3, "name":"신보람"....}
+				result.put("code", 200);
+				result.put("result", booking);
+			} else {
+				// {"code":500, "error_message":"예약 내역이 없습니다."}
+				result.put("code", 500);
+				result.put("error_message", "예약 내역이 없습니다.");
+			}
 			
 			return result;
 		}
