@@ -47,10 +47,10 @@ public class recruitEntity {
 	private String deadline;
 	
 	@CreationTimestamp // 시간을 넣기 않아도 자동으로 넣어줌
-	@Column(name = "createdAt");
+	@Column(name = "createdAt")
 	private createdAt createdAt;
 	
 	@UpdateTimestamp
-	@Column(name = "updatedAt");
+	@Column(name = "updatedAt")
 	private updatedAt updatedAt;
 }
