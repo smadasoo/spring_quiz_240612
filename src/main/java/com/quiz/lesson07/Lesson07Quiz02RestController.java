@@ -1,5 +1,7 @@
 package com.quiz.lesson07;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +18,8 @@ public class Lesson07Quiz01RestController {
 	private CompanyBO companyBO;
 
 	// /lesson07/quiz01/save1
-	@GetMapping("/save1")
-	public CompanyEntity save1() {
+	@GetMapping("/1")
+	public companyId quiz02_1() {
 //		회사명 : 넥손
 //		사업내용 : 컨텐츠 게임
 //		규모 : 대기업
@@ -26,7 +28,7 @@ public class Lesson07Quiz01RestController {
 	}
 	
 	// /lesson07/quiz01/save2
-	@GetMapping("/save2")
+	@GetMapping("/2")
 	public CompanyEntity save2() {
 //		회사명 : 버블팡
 //		사업내용 : 여신 금융업
@@ -49,6 +51,12 @@ public class Lesson07Quiz01RestController {
 		companyBO.deleteCompanyById(8);
 		
 		return "삭제 성공";
+	}
+	
+	// lesson07/quiz02/7
+	@GetMapping("/7")
+	public List<RecruitEntity> quiz02_7() {
+		return recruitRepository.findByDeadlineAndSalaryAndType("2026-04-10", 8100, "정규직");
 	}
 	
 }
