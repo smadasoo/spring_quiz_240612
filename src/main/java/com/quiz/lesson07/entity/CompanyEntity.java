@@ -17,30 +17,31 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity
-@Table(name= "company")
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder(toBuilder = true)
+@Getter
+@Table(name = "company")
+@Entity
 public class CompanyEntity {
-
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private String name;
-	private String bussiness;
+	
+	private String business;
+	
 	private String scale;
 	
-	@Column(name = "headcount")
 	private int headcount;
 	
 	@CreationTimestamp
-	@Column (name = "createdAt")
+	@Column(name = "createdAt")
 	private LocalDateTime createdAt;
 	
 	@UpdateTimestamp
-	@Column (name = "updatedAt")
+	@Column(name = "updatedAt")
 	private LocalDateTime updatedAt;
 }
