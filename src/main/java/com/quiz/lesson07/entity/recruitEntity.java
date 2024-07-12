@@ -1,5 +1,8 @@
 package com.quiz.lesson07.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,11 +23,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Builder
-@Table(name= "recruit")
+@Table(name = "recruit")
 @Entity
-public class recruitEntity {
-
-	
+public class RecruitEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -42,15 +43,15 @@ public class recruitEntity {
 	
 	private String region;
 	
-	private String salary;
+	private int salary;
 	
-	private String deadline;
+	private LocalDate deadline;
 	
-	@CreationTimestamp // 시간을 넣기 않아도 자동으로 넣어줌
+	@CreationTimestamp
 	@Column(name = "createdAt")
-	private createdAt createdAt;
+	private LocalDateTime createdAt;
 	
 	@UpdateTimestamp
 	@Column(name = "updatedAt")
-	private updatedAt updatedAt;
+	private LocalDateTime updatedAt;
 }
